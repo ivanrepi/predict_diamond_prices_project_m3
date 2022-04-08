@@ -1,69 +1,163 @@
-# Data Project README file
+# Diamond Price Predictor
 
-The README file describes the essence of the project playing the most important role. Most visitors will simply scroll down about twice on the README and leave if they are not interested. So, the README file should provide the reason **why** to checkout your project!!!). 
-Bearing that in mind, your job is to: 
-- Tell them what it is (with context).
-- Show them what it looks like in action.
-- Show them how they use it.
-- Tell them any other relevant details.
+In this project, a Supervised Machine Learning algorithm has been built, which will allow us to predict the price of a Diamond.
 
-![Image](https://res.cloudinary.com/springboard-images/image/upload/q_auto,f_auto,fl_lossy/wordpress/2019/05/aiexcerpt.png)
+![Image](https://www.genesisdiamonds.net//media/wysiwyg/DIAMOND-BUYING-PAGE-banner.jpg)
 
 ---
+## **Description**
+Given a certain features of a Diamond, the model will predict the sales price of that one.
 
-## **Formatting**
-Your readers will most likely view your README in a browser so please keep that in mind when formatting its content: 
-- Use proper format when necesary (e.g.: `import pandas as pd`). 
-- Categorize content using two or three levels of header beneath. 
-- Make use of **emphasis** to call out important words. 
-- Link to project pages for related libraries you mention. Link to Wikipedia, Wiktionary, even Urban Dictionary definitions for words of which a reader may not be familiar. Make amusing cultural references. 
-- Add links to related projects or services. 
+To better Diamonds understanding as well as data cleaning process, check my [previous project](https://github.com/ivanrepi/data_visualization_project_m2) !
 
-> Here you have a markdown cheatsheet [Link](https://commonmark.org/help/) and tutorial [Link](https://commonmark.org/help/tutorial/).
+&nbsp;
+## **Diamonds Dataset** :
 
+The price of a diamond has a direct correlation with its carat. It is not a straight linear correlation but an exponential one. There are other relevant features which also influence its price, such as color, clarity and cut.
 
-## **Start writing ASAP:**
-*Last but not least, by writing your README soon you give yourself some pretty significant advantages. Most importantly, you’re giving yourself a chance to think through the project without the overhead of having to change code every time you change your mind about how something should be organized or what should be included.*
+<p align="center"><img src="https://i.imgflip.com/3l8sg9.jpg"></p>
 
 
-## **Suggested Structure:**
+This classic dataset contains the prices and other attributes of almost 44,000 diamonds. It's a great dataset for machine learning and work with data analysis and visualization.
 
-### :raising_hand: **Name** 
-Self-explanatory names are best. If the name sounds too vague or unrelated, it may be a signal to move on. It also must be catchy. Images, Logo, Gif or some color is strongly recommended.
+Dataset Columns :
+- **price** : price in US dollars ( $326 - $18,823 )
 
+- **carat** : weight of the diamond ( 0.2 - 5.01 )
+
+- **cut** : quality of the cut ( Fair , Good , Very Good , Premium , Ideal )
+
+- **color** : diamond colour, from J ( worst ) to D ( best )
+
+- **clarity** : a measurement of how clear the diamond is ( I1 (worst) ,SI2 ,SI1 ,VS2 ,VS1 ,VVS2 ,VVS1 ,IF (best))
+
+- **x** : length in mm ( 0 - 10.74 )
+
+- **y** : width in mm ( 0 - 58.9 )
+
+- **z** : depth in mm ( 0 - 31.8 )
+
+- **depth** : total depth percentage = z / mean( x, y ) = 2 * z / ( x + y ) --> ( 43 - 79 )
+
+- **table** : width of top of diamond relative to widest point ( 43 - 95 )
+
+![Image](https://4cs.gia.edu/wp-content/uploads/2016/08/PUBL160028_SC_4Cs_Spokes_990x500_ENG_v1.jpg)
+
+
+---
+## **Getting Started**
 ### :baby: **Status**
-Alpha, Beta, 1.1, Ironhack Data Analytics Final Project, etc... It's OK to write a sentence, too. The goal is to let interested people know where this project is at.
+This is part of Kaggle Competition. The main goal is to build a complete ML model.
 
-### :running: **One-liner**
-Having a one-liner that describes the pipeline/api/app is useful for getting an idea of what your code does in slightly greater detail. 
+### :computer: **Dependencies**
 
-### :computer: **Technology stack**
-Python, Pandas, Scipy, Scikit-learn, etc. Indicate the technological nature of the software, including primary programming language(s), main libraries and whether the software is intended as standalone or as a module in a framework or other ecosystem.
+- This repository is tested on **Python 3.7+**.
+- Create a virtual environment with the version of Python you're going to use and activate it.
+
+- Install [pandas](https://pandas.pydata.org/docs/user_guide/index.html) library. Copy and paste next command in your master branch:
+    ```
+    conda install pandas
+    ```
+- Install [scikit-learn](https://scikit-learn.org/stable/) library. Copy and paste next command in your master branch:
+    ```
+    pip install -U scikit-learn
+    ```
+- Install [XGBoost](https://xgboost.readthedocs.io/en/stable/) library. Copy and paste next command in your master branch:
+    ```
+    pip install xgboost
+    ```
+- Install [matplotlib](https://matplotlib.org/stable/index.html) library. Copy and paste next command in your master branch:
+    ```
+    pip install matplotlib
+    ```
+- Install [seaborn](https://seaborn.pydata.org/) library. Copy and paste next command in your master branch:
+    ```
+    pip install seaborn
+    ```
+
+
+
+&nbsp;
+
+---
+## :lock: **ADMIN ROLE**
+
+### :clipboard: **Overview**
+Admin role should chose what kind of 'Place of Interest' the user will use. It can be obtained [here](https://datos.madrid.es/nuevoMadrid/swagger-ui-master-2.2.10/dist/index.html?url=/egobfiles/api.datos.madrid.es.json#/).
+
+The app includes a double authentication step. Admin will receive a security number in his/her email, to verify his/her identity.
+
+
+### :wrench: **Installing**
+Once all dependencies are clear, follow the next steps to install it:
+1. Clone this [repo](https://github.com/ivanrepi/nearest_bicimad_station)
+2. Create an account on EMT Madrid developer website ([here](https://mobilitylabs.emtmadrid.es/es/doc/new-app))
+3. In your local repository, create the file ".env", with the next parameters:
+    ```
+    path="path of the repo"
+
+    sender_email = "type your email" 
+    password_sender = "type your email password"
+    admin_email="type admin email" #For double auth. Can be different of the sender one
+    emt_madrid_email="email from step 2"
+    emt_madrid_pwd="password from step 2"
+    ```
+4. Open the main_admin.py file, and edit the URL of the 'Place of Interest'. By default, it is settled "Instalaciones Deportivas Básicas de Madrid".
+
+### :point_right: **Executing program**
+1. Open the terminal.
+2. Look for the main_admin.py file in your repo.
+3. Execute the next command:
+    ```
+    python main_admin.py
+    ```
+4. It will ask you for an admin email. It should be the same settled in ".env" file.
+5. If email address is correct, admin should receive a security code in his/her email.
+6. Type this code in the terminal and press enter.
+7. If code is correct, it starts the process to prepare the result table (which one that user will work with).
 
 ### :boom: **Core technical concepts and inspiration**
-Why does it exist? Frame your project for the potential user. Compare/contrast your project with other, similar projects so the user knows how it is different from those projects. Highlight the technical concepts that your project demonstrates or supports. Keep it very brief.
+The main goal of this role is to work with double authentication mode, as well as divide the app in two kind of users. 
+Working with this division, final user will not have to wait for data preparation (as this is part of the admin work)
 
-### :wrench: **Configuration**
-Requeriments, prerequisites, dependencies, installation instructions.
+&nbsp;
 
-### :see_no_evil: **Usage**
-Parameters, return values, known issues, thrown errors.
+
+
+---
 
 ### :file_folder: **Folder structure**
 ```
 └── project
     ├── __trash__
+    │ 
+    ├── .git
+    │ 
     ├── .gitignore
-    ├── .env
-    ├── requeriments.txt
+    │ 
+    ├── nearest_bicimad_station.html
+    │ 
     ├── README.md
-    ├── main_script.py
-    ├── notebooks
-    │   ├── notebook1.ipynb
-    │   └── notebook2.ipynb
-    ├── package1
-    │   ├── module1.py
-    │   └── module2.py
+    │ 
+    ├── main_user.py
+    │ 
+    ├── main_admin.py
+    │ 
+    ├── modules
+    │   └── geo_calculations.py
+    │ 
+    ├── p_acquisition
+    │   └── acquisition.py
+    │
+    ├── p_wrangling
+    │   └── wrangling.py
+    │
+    ├── p_analysis
+    │   └── analysis.py
+    │
+    ├── p_reporting
+    │   └── reporting.py
+    │
     └── data
         ├── raw
         ├── processed
@@ -72,40 +166,13 @@ Parameters, return values, known issues, thrown errors.
 
 > Do not forget to include `__trash__` and `.env` in `.gitignore` 
 
+&nbsp;
 ### :shit: **ToDo**
-Next steps, features planned, known bugs (shortlist).
-
-### :information_source: **Further info**
-Credits, alternatives, references, license.
-
-### :love_letter: **Contact info**
-Getting help, getting involved, hire me please.
+:black_square_button: Create an API to connect to Places of Interests webstite.  
+:black_square_button: Get all places of interest at the same time, and not have to settled it in the main_admin script.  
+:black_square_button: Add possibility to go by car, walking or taxi to the nearest BiciMad station.  
+:black_square_button: Create the UI to help the final user to use it.  
 
 ---
 
-> Here you have some repo examples:
-- [Onegy](https://github.com/borjauria/Final-Project)
-- [E-VITALOS](https://github.com/marinapm90/E-vitalos)
-- [Movie Founder](https://github.com/Alfagu/final-project-Ironhack-0419mad)
-- [MMELT](https://github.com/Juanjopf19/Ironhack-final-project--MMELT) 
-
-- [ART-ificial intelligence](https://github.com/Juliaroch/Ironhack-final-project-Julia-Roch)
-- [Next-Frida](https://github.com/Pacoanes/Next-Frida)
-- [Art Classification](https://github.com/serguma/art_classification)
-- [Convolutional Neural Network to detect Pneumonia](https://github.com/jmolins89/final-project)
-- [Brain tumor detection project](https://github.com/alonsopdani/brain-tumor-detection-project)
-
-- [Math handwritting recognition](https://github.com/yaakx/Math_handwritting_recognition)
-- [Mamba (OCR-Translator-Assistant)](https://github.com/YonatanRA/OCR-translator-assistant-project)
-
-- [Yummest](https://github.com/almsasantos/Yummest_Food_App)
-- [HackDecó](https://github.com/herreradelduque/Ironhack-Final-Project---HackDeco)
-
-- [Political Spanish Sentiment](https://github.com/ssarahreyes/political_spanish_sentiment)
-- [Face-Mask Detection](https://github.com/marinafdezban/final_project)
-
-> Here you have some tools and references:
-- [Make a README](https://www.makeareadme.com/)
-- [Awesome README](https://github.com/matiassingers/awesome-readme)
-- [Markdown Cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
 
