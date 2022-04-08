@@ -49,6 +49,10 @@ Dataset Columns :
 ### :baby: **Status**
 This is part of Kaggle Competition. The main goal is to build a complete ML model.
 
+The EDA (Exploratory Data Analysis) notebook is located [here](https://github.com/ivanrepi/predict_diamond_prices_project_m3/blob/master/notebooks/EDA.ipynb)
+
+The main study of this project (model, test, train, predicition, etc.) is located [here](https://github.com/ivanrepi/predict_diamond_prices_project_m3/blob/master/notebooks/diamond_price_prediction.ipynb)
+
 ### :computer: **Dependencies**
 
 - This repository is tested on **Python 3.7+**.
@@ -80,45 +84,49 @@ This is part of Kaggle Competition. The main goal is to build a complete ML mode
 &nbsp;
 
 ---
-## :lock: **ADMIN ROLE**
-
-### :clipboard: **Overview**
-Admin role should chose what kind of 'Place of Interest' the user will use. It can be obtained [here](https://datos.madrid.es/nuevoMadrid/swagger-ui-master-2.2.10/dist/index.html?url=/egobfiles/api.datos.madrid.es.json#/).
-
-The app includes a double authentication step. Admin will receive a security number in his/her email, to verify his/her identity.
 
 
-### :wrench: **Installing**
-Once all dependencies are clear, follow the next steps to install it:
-1. Clone this [repo](https://github.com/ivanrepi/nearest_bicimad_station)
-2. Create an account on EMT Madrid developer website ([here](https://mobilitylabs.emtmadrid.es/es/doc/new-app))
-3. In your local repository, create the file ".env", with the next parameters:
-    ```
-    path="path of the repo"
+### :clipboard: **Modelling with XGBoost**
+After several tests (which are located in the discarded folder) the model with a slower RMSE result is XGBoost one.
 
-    sender_email = "type your email" 
-    password_sender = "type your email password"
-    admin_email="type admin email" #For double auth. Can be different of the sender one
-    emt_madrid_email="email from step 2"
-    emt_madrid_pwd="password from step 2"
-    ```
-4. Open the main_admin.py file, and edit the URL of the 'Place of Interest'. By default, it is settled "Instalaciones Deportivas Básicas de Madrid".
+**XGBoost**, which stands for Extreme Gradient Boosting, is a scalable, distributed gradient-boosted decision tree (GBDT) machine learning library. It provides parallel tree boosting and is the leading machine learning library for regression, classification, and ranking problems.
 
-### :point_right: **Executing program**
-1. Open the terminal.
-2. Look for the main_admin.py file in your repo.
-3. Execute the next command:
-    ```
-    python main_admin.py
-    ```
-4. It will ask you for an admin email. It should be the same settled in ".env" file.
-5. If email address is correct, admin should receive a security code in his/her email.
-6. Type this code in the terminal and press enter.
-7. If code is correct, it starts the process to prepare the result table (which one that user will work with).
+It’s vital to an understanding of XGBoost to first grasp the machine learning concepts and algorithms that XGBoost builds upon: supervised machine learning, decision trees, ensemble learning, and gradient boosting.
 
-### :boom: **Core technical concepts and inspiration**
-The main goal of this role is to work with double authentication mode, as well as divide the app in two kind of users. 
-Working with this division, final user will not have to wait for data preparation (as this is part of the admin work)
+Supervised machine learning uses algorithms to train a model to find patterns in a dataset with labels and features and then uses the trained model to predict the labels on a new dataset’s features.
+
+![image](https://www.nvidia.com/content/dam/en-zz/Solutions/glossary/data-science/xgboost/img-1.png)
+
+### :bar_chart: **Scale**
+Machine learning models learn a mapping from input variables to an output variable.
+
+As such, the scale and distribution of the data drawn from the domain may be different for each variable.
+
+Input variables may have different units (e.g. feet, kilometers, and hours) that, in turn, may mean the variables have different scales.
+
+**Standardizing** a dataset involves rescaling the distribution of values so that the mean of observed values is 0 and the standard deviation is 1.
+
+This can be thought of as subtracting the mean value or centering the data.
+
+
+### :wrench: **Label**
+Data labeling in Machine Learning (ML) is the process of assigning labels to subsets of data based on its characteristics. Data labeling takes unlabeled datasets and augments each piece of data with informative labels or tags. 
+
+Next image represents a simple example about what label is:
+
+<p align="center"><img src="https://miro.medium.com/max/386/1*Yp6r7m82IoSnnZDPpDpYNw.png"></p>
+
+### :diamond_shape_with_a_dot_inside: **Train & Test**
+The train-test split procedure is used to estimate the performance of machine learning algorithms when they are used to make predictions on data not used to train the model.
+
+It is a fast and easy procedure to perform, the results of which allow you to compare the performance of machine learning algorithms for your predictive modeling problem. Although simple to use and interpret, there are times when the procedure should not be used, such as when you have a small dataset and situations where additional configuration is required, such as when it is used for classification and the dataset is not balanced.
+
+![image](https://miro.medium.com/max/1400/1*-NC7sX7kzjJ_UKfUNYbh6Q.png)
+
+### :diamond_shape_with_a_dot_inside: **RMSE**
+RMSE: Root Mean Square Error is the measure of how well a regression line fits the data points. RMSE can also be construed as Standard Deviation in the residuals.
+
+In this prediction, the RMSE is **522,06**.
 
 &nbsp;
 
@@ -129,49 +137,29 @@ Working with this division, final user will not have to wait for data preparatio
 ### :file_folder: **Folder structure**
 ```
 └── project
-    ├── __trash__
-    │ 
     ├── .git
     │ 
     ├── .gitignore
-    │ 
-    ├── nearest_bicimad_station.html
     │ 
     ├── README.md
     │ 
     ├── main_user.py
     │ 
-    ├── main_admin.py
-    │ 
-    ├── modules
-    │   └── geo_calculations.py
-    │ 
-    ├── p_acquisition
-    │   └── acquisition.py
-    │
-    ├── p_wrangling
-    │   └── wrangling.py
-    │
-    ├── p_analysis
-    │   └── analysis.py
-    │
-    ├── p_reporting
-    │   └── reporting.py
+    ├── notebooks
+    │    ├── discarded
+    │    ├── diamond_price_prediction.ipynb
+    │    └── EDA.ipynb
     │
     └── data
         ├── raw
-        ├── processed
-        └── results
+        ├── train
+        ├── test
+        └── prediction
 ```
 
-> Do not forget to include `__trash__` and `.env` in `.gitignore` 
+
 
 &nbsp;
-### :shit: **ToDo**
-:black_square_button: Create an API to connect to Places of Interests webstite.  
-:black_square_button: Get all places of interest at the same time, and not have to settled it in the main_admin script.  
-:black_square_button: Add possibility to go by car, walking or taxi to the nearest BiciMad station.  
-:black_square_button: Create the UI to help the final user to use it.  
 
 ---
 
